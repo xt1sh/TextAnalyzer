@@ -19,6 +19,9 @@ namespace TextAnalyzer.Services
             // Add new analyzers here to make them work
 
             services.AddTransient<IAnalyzer, SyllableCounter>();
+            services.AddTransient<IAnalyzer, ConsonantsPercent>();
+            services.AddTransient<IAnalyzer, MostFrequentLastLetter>();
+            services.AddTransient<IAnalyzer, WordsWithMoreVowelsPercent>();
         }
     }
 }

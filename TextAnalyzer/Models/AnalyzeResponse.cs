@@ -13,9 +13,17 @@ namespace TextAnalyzer.Models
             AdditionalMessage = additionalMessage;
             Result = result;
         }
-
+        /// <summary>
+        /// Name of the analyzer that was used
+        /// </summary>
         public string AnalyzerName { get; set; }
+        /// <summary>
+        /// Analyzer's additional message
+        /// </summary>
         public string AdditionalMessage { get; set; }
+        /// <summary>
+        /// Result that was returned by AnalyzeMetric method
+        /// </summary>
         public string Result { get; set; }
     }
 }

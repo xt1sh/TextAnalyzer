@@ -12,9 +12,9 @@
     <button class="submit-button form-element" type="submit">Submit</button>
   </form>
 </div>
-<div *ngIf="response" class="response">
-  <div *ngFor="let analyzed of response">
+<div class="response" *ngIf="response">
+  <div class="message" *ngFor="let analyzed of response">
     <h3>{{analyzed.analyzerName}}</h3>
-    <h4>{{analyzed.additionalMessage}}: {{analyzed.result}}</h4>
+    <p>{{analyzed.additionalMessage}}: {{analyzed.result}}</p>
   </div>
 </div>

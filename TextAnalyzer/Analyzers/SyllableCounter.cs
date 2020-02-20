@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TextAnalyzer.Interfaces;
+using TextAnalyzer.Services;
 
 namespace TextAnalyzer.Analyzers
 {
+    /// <summary>
+    /// Analyzer that counts syllables in every word in text and summs them
+    /// </summary>
     public class SyllableCounter : IAnalyzer
     {
         public string AnalyzerName => nameof(SyllableCounter);
@@ -19,8 +23,7 @@ namespace TextAnalyzer.Analyzers
 
         public string AnalyzeMetric(string text)
         {
-            var separators = new char[] { ' ', '!', '?', '.', '-', ':', '\"', '\'' };
-            var words = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            var words = Utilities.SeparateText(text);
             var count = 0;
 
             foreach (var word in words)
@@ -31,6 +34,11 @@ namespace TextAnalyzer.Analyzers
             return count.ToString();
         }
 
+        /// <summary>
+        /// Counts syllables in word
+        /// </summary>
+        /// <param name="word">Word to count syllables in</param>
+        /// <returns>Number of syllables</returns>
         private static int CountSyllablesInWord(string word)
         {
             var processedWord = word.ToUpper().Trim();

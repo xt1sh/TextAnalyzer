@@ -20,6 +20,13 @@ namespace TextAnalyzer.Controllers
             _analyzers = analyzers;
         }
 
+        /// <summary>
+        /// Analyzes text in response with given analyzers
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <returns>Response with status code 200 and AnalyzeResponse array
+        /// or status code 200 with error message
+        /// </returns>
         [HttpPost]
         public IActionResult AnalyzeText(AnalyzeRequest request)
         {

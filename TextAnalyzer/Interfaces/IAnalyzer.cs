@@ -17,7 +17,6 @@ namespace TextAnalyzer.Interfaces
         /// <summary>
         /// Message that consists of additional analyzer information
         /// </summary>
-        /// 
         string AdditionalMessage { get; set; }
 
         #endregion
