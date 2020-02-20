@@ -14,7 +14,7 @@
 </div>
 <div class="response" *ngIf="response">
   <div class="message" *ngFor="let analyzed of response">
-    <h3>{{analyzed.analyzerName}}</h3>
+    <h3>{{getAnalyzerShowName(analyzed.analyzerName)}}</h3>
     <p>{{analyzed.additionalMessage}}: {{analyzed.result}}</p>
   </div>
 </div>

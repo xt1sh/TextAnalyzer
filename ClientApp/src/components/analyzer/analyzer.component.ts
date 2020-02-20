@@ -32,6 +32,10 @@ export class AnalyzerComponent implements OnInit {
     });
   }
 
+  getAnalyzerShowName(serverName: string): string {
+    return this.analyzers.find(analyzer => analyzer.serverName.toUpperCase() === serverName.toUpperCase()).name;
+  }
+
   onSubmit(): void {
     this.hasError = false;
     const selected = this.form.value.analyzers

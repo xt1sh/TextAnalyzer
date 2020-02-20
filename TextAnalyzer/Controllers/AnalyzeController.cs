@@ -30,31 +30,32 @@ namespace TextAnalyzer.Controllers
         [HttpPost]
         public IActionResult AnalyzeText(AnalyzeRequest request)
         {
-            try
+
+            if (request.Analyzers is null || request.Analyzers.Count() == 0)
+                return BadRequest(new { Message = "Please choose analyzers" });
+
+            var response = new List<AnalyzeResponse>();
+
+            foreach (var analyzerName in request.Analyzers)
             {
-                if (request.Analyzers is null || request.Analyzers.Count() == 0)
-                    return BadRequest(new { Message = "Please choose analyzers" });
+                var analyzer = _analyzers.FirstOrDefault(a => a.AnalyzerName.ToUpper() == analyzerName.ToUpper());
 
-                var response = new List<AnalyzeResponse>();
-
-                foreach (var analyzerName in request.Analyzers)
+                if (analyzer != null)
                 {
-                    var analyzer = _analyzers.FirstOrDefault(a => a.AnalyzerName.ToUpper() == analyzerName.ToUpper());
-
-                    if (analyzer != null)
+                    try
                     {
                         var result = analyzer.AnalyzeMetric(request.Text);
-                        response.Add(new AnalyzeResponse(analyzer.AnalyzerName, analyzer.AdditionalMessage, result));
+                        if (result != default)
+                            response.Add(new AnalyzeResponse(analyzer.AnalyzerName, analyzer.AdditionalMessage, result));
+                    }
+                    catch
+                    {
+                        // log here
                     }
                 }
+            }
 
-                return Ok(response);
-            }
-            catch(Exception e)
-            {
-                // log here
-                throw new Exception("Oops. Something went wrong");
-            }
+            return Ok(response);
         }
     }
 }

@@ -23,27 +23,23 @@ namespace TextAnalyzer.Analyzers
 
         public string AnalyzeMetric(string text)
         {
-            try
+            var vowels = new char[] { 'A', 'E', 'I', 'O', 'U' };
+            var words = Utilities.SeparateText(text);
+
+            var wordsWithVowelsCount = 0;
+
+            foreach (var word in words)
             {
-                var vowels = new char[] { 'A', 'E', 'I', 'O', 'U' };
-                var words = Utilities.SeparateText(text);
+                var vowelsCount = word.ToUpper().Where(ch => vowels.Contains(ch)).Count();
 
-                var wordsWithVowelsCount = 0;
-
-                foreach (var word in words)
-                {
-                    var vowelsCount = word.ToUpper().Where(ch => vowels.Contains(ch)).Count();
-
-                    if (vowelsCount > word.Count() - vowelsCount)
-                        wordsWithVowelsCount++;
-                }
-
-                return ((double)wordsWithVowelsCount / words.Count() * 100).ToString();
+                if (vowelsCount > word.Count() - vowelsCount)
+                    wordsWithVowelsCount++;
             }
-            catch
-            {
+
+            if (words.Count() == 0)
                 return "0";
-            }
+
+            return ((double)wordsWithVowelsCount / words.Count() * 100).ToString();
         }
     }
 }

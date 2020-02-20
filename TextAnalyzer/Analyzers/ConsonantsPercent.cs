@@ -39,7 +39,7 @@ namespace TextAnalyzer.Analyzers
             }
 
             if (vowelsCount == 0)
-                consonantsCount.ToString();
+                return consonantsCount.ToString();
 
             return ((double)consonantsCount / vowelsCount).ToString();
         }
