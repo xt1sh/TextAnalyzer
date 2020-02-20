@@ -27,6 +27,15 @@ namespace TextAnalyzer
         {
             services.AddAnalyzers();
 
+            // Policy to allow request from anywhere 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
+
             services.AddControllers();
         }
 
@@ -37,6 +46,8 @@ namespace TextAnalyzer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("EnableCORS");
 
             app.UseRouting();
 

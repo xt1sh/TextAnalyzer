@@ -45,6 +45,7 @@ namespace TextAnalyzer.Controllers
             }
             catch(Exception e)
             {
+                // log here
                 throw new Exception("Oops. Something went wrong");
             }
         }

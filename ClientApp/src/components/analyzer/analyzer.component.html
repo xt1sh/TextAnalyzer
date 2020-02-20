@@ -1,4 +1,20 @@
 <h1>Text Analyzer</h1>
 <div>
-  <h5></h5>
+  <h4>Enter text to analyze and choose analyzers that you want</h4>
+</div>
+<div class="form-wrapper">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <textarea class="form-element" cols="100" rows="15" formControlName="text"></textarea>
+    <div class="form-element" formArrayName="analyzers" *ngFor="let analyzer of formAnalyzers.controls; let i=index">
+      <input type="checkbox" [formControlName]="i">
+      {{analyzers[i].name}} ({{analyzers[i].description}})
+    </div>
+    <button class="submit-button form-element" type="submit">Submit</button>
+  </form>
+</div>
+<div *ngIf="response" class="response">
+  <div *ngFor="let analyzed of response">
+    <h3>{{analyzed.analyzerName}}</h3>
+    <h4>{{analyzed.additionalMessage}}: {{analyzed.result}}</h4>
+  </div>
 </div>

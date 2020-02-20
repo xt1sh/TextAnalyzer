@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:4200",
+      "applicationUrl": "http://localhost:62836",
       "sslPort": 0
     }
   },
@@ -19,7 +19,7 @@
     "TextAnalyzer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:4200",
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
