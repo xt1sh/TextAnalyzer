@@ -5,5 +5,5 @@ To add your own analyzer just inherit it from TextAnalyzer.Interfaces.IAnalyzer 
 and AnalyzeMetric method that analyzes text and return metric value. Then add it to DI using 
 TextAnalyzer.Services.ServiceConfigurations. On the client side you have to add Analyzer variavle with name, serverName and description
 in analyzers.ts file.
-That's all.
+That's all.  
 ![Test](test.png)
