@@ -6,4 +6,5 @@ and AnalyzeMetric method that analyzes text and return metric value. Then add it
 TextAnalyzer.Services.ServiceConfigurations. On the client side you have to add Analyzer variavle with name, serverName and description
 in analyzers.ts file.
 That's all.  
+Here is example:    
 ![Test](test.png)
